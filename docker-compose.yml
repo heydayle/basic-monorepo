@@ -1,0 +1,61 @@
+
+x-vite-env: &vite-env
+  VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+  # VITE_PLATFORM_BASE_URL: ${VITE_PLATFORM_BASE_URL}
+  # VITE_OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID}
+  # VITE_OAUTH_REDIRECT_URI: ${OAUTH_REDIRECT_URI}
+  # VITE_OAUTH_SCOPE: ${OAUTH_SCOPE}
+
+x-pnpm-workspace: &pnpm-workspace
+  build:
+    context: .
+    dockerfile: frontend/Dockerfile.dev
+  working_dir: /workspace
+  volumes:
+    - .:/workspace
+    - workspace_node_modules:/workspace/node_modules
+  command: sh -c "pnpm install"
+
+services:
+  deps-installer:
+    <<: *pnpm-workspace
+
+  frontend-packages:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.dev
+    working_dir: /workspace/frontend
+    volumes:
+      - .:/workspace
+      - workspace_node_modules:/workspace/frontend/node_modules
+    profiles:
+      - packages
+
+  packages-install:
+    extends: frontend-packages
+    command: pnpm install
+    profiles:
+      - packages
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    working_dir: /workspace/frontend
+    volumes:
+      - .:/workspace
+      - workspace_node_modules:/workspace/frontend/node_modules
+    env_file:
+      - .env
+      - frontend/.env
+    environment:
+      <<: *vite-env
+    command: pnpm --filter frontend dev
+    depends_on:
+      deps-installer:
+        condition: service_completed_successfully
+
+volumes:
+  workspace_node_modules: {}
