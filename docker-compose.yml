@@ -1,32 +1,33 @@
 x-vite-env: &vite-env
   VITE_API_BASE_URL: ${VITE_API_BASE_URL}
 
-x-pnpm-workspace: &pnpm-workspace
+x-workspace-service: &workspace-service
   build:
     context: .
-    dockerfile: frontend/Dockerfile.dev  # Dockerfile dev dùng cho toàn repo
-  working_dir: /workspace                # root của monorepo
+    dockerfile: docker/Dockerfile.dev
+  working_dir: /workspace
   volumes:
     - .:/workspace
     - workspace_node_modules:/workspace/node_modules
+    - pnpm_store:/workspace/.pnpm-store
 
 services:
-  # Cài dependency cho toàn workspace
+  # Install dependencies once for the whole monorepo
   packages-install:
-    <<: *pnpm-workspace
+    <<: *workspace-service
     command: pnpm install
 
-  # (Nếu bạn vẫn muốn service riêng cho "packages" – ví dụ storybook)
+  # (Optional) workspace-level commands for packages
   frontend-packages:
-    <<: *pnpm-workspace
-    working_dir: /workspace/packages     # nếu cần chạy gì trong packages
-    command: pnpm --filter packages dev        # ví dụ
+    <<: *workspace-service
+    working_dir: /workspace/packages
+    command: pnpm --filter packages dev
     profiles:
       - packages
 
-  # App frontend chính
+  # Main frontend app
   frontend:
-    <<: *pnpm-workspace
+    <<: *workspace-service
     working_dir: /workspace/frontend
     ports:
       - "3000:3000"
@@ -41,3 +42,4 @@ services:
 
 volumes:
   workspace_node_modules: {}
+  pnpm_store: {}
