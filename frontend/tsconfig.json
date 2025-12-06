@@ -20,7 +20,9 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@basic/components": ["../packages/components/src/index.ts"],
+      "@basic/components/*": ["../packages/components/src/*"]
     }
   },
   "ts-node": {
