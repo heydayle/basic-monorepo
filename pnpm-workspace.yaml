@@ -1,7 +1,7 @@
 # checkout more: https://pnpm.io/catalogs
 packages:
   - 'frontend'
-  - 'packages'
+  - 'packages/*'
 
 catalog:
   dayjs: ^1.11.19
