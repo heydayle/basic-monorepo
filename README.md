@@ -1,14 +1,12 @@
-# learn-python-react
-Learning python flask
 
-## How to run frontend?
+## How to run?
 
 1. Copy example.env to .env
 2. Run setup command
 
 ``` bash
 
-sudo make setup
+make setup
 
 # Explore more commands please run **make help***
 

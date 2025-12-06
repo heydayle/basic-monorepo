@@ -1,61 +1,43 @@
-
 x-vite-env: &vite-env
   VITE_API_BASE_URL: ${VITE_API_BASE_URL}
-  # VITE_PLATFORM_BASE_URL: ${VITE_PLATFORM_BASE_URL}
-  # VITE_OAUTH_CLIENT_ID: ${OAUTH_CLIENT_ID}
-  # VITE_OAUTH_REDIRECT_URI: ${OAUTH_REDIRECT_URI}
-  # VITE_OAUTH_SCOPE: ${OAUTH_SCOPE}
 
 x-pnpm-workspace: &pnpm-workspace
   build:
     context: .
-    dockerfile: frontend/Dockerfile.dev
-  working_dir: /workspace
+    dockerfile: frontend/Dockerfile.dev  # Dockerfile dev dùng cho toàn repo
+  working_dir: /workspace                # root của monorepo
   volumes:
     - .:/workspace
     - workspace_node_modules:/workspace/node_modules
-  command: sh -c "pnpm install"
 
 services:
-  deps-installer:
-    <<: *pnpm-workspace
-
-  frontend-packages:
-    build:
-      context: .
-      dockerfile: frontend/Dockerfile.dev
-    working_dir: /workspace/frontend
-    volumes:
-      - .:/workspace
-      - workspace_node_modules:/workspace/frontend/node_modules
-    profiles:
-      - packages
-
+  # Cài dependency cho toàn workspace
   packages-install:
-    extends: frontend-packages
+    <<: *pnpm-workspace
     command: pnpm install
+
+  # (Nếu bạn vẫn muốn service riêng cho "packages" – ví dụ storybook)
+  frontend-packages:
+    <<: *pnpm-workspace
+    working_dir: /workspace/packages     # nếu cần chạy gì trong packages
+    command: pnpm --filter packages dev        # ví dụ
     profiles:
       - packages
 
+  # App frontend chính
   frontend:
-    build:
-      context: .
-      dockerfile: frontend/Dockerfile.dev
+    <<: *pnpm-workspace
+    working_dir: /workspace/frontend
     ports:
       - "3000:3000"
-    working_dir: /workspace/frontend
-    volumes:
-      - .:/workspace
-      - workspace_node_modules:/workspace/frontend/node_modules
     env_file:
       - .env
       - frontend/.env
     environment:
       <<: *vite-env
-    command: pnpm --filter frontend dev
     depends_on:
-      deps-installer:
-        condition: service_completed_successfully
+      - packages-install
+    command: pnpm --filter frontend dev
 
 volumes:
   workspace_node_modules: {}

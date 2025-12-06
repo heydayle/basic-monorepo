@@ -56,8 +56,9 @@ dev:
 	@docker-compose up -d
 	@echo ""
 	@echo "🌐 Services available at:"
-	@printf '- Frontend:	$(BLUE)http://localhost:3000$(NC)\n'
-	@printf '- Backend:	$(BLUE)http://localhost:6001$(NC)\n'
+	@echo "- Frontend: http://localhost:3000"
+# 	@printf '- Frontend:	$(BLUE)http://localhost:3000$(NC)\n'
+# 	@printf '- Backend:	$(BLUE)http://localhost:6001$(NC)\n'
 
 stop:
 	@echo "🛑 Stopping development environment..."
@@ -75,11 +76,17 @@ restart:
 	@docker-compose restart
 
 clean:
+# 	@echo "🧹 Cleaning up development environment..."
+# 	@docker-compose down -v --remove-orphans
+#   @docker system prune -f
+# 	@rm -rf node_modules frontend/node_modules
+# 	@rm -rf frontend/dist
+# 	@echo "✅ Cleanup completed!"
 	@echo "🧹 Cleaning up development environment..."
-	@docker-compose down -v --remove-orphans
-# 	@docker system prune -f
-	@rm -rf node_modules frontend/node_modules
-	@rm -rf frontend/dist
+	@docker compose down --volumes --remove-orphans
+	-@docker volume rm workspace_node_modules 2>/dev/null
+	-@rm -rf node_modules frontend/node_modules
+	-@rm -rf frontend/dist
 	@echo "✅ Cleanup completed!"
 
 fix-fe:
