@@ -9,7 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/shadcn/ui/sidebar'
+} from "@basic/components/shadcn/ui/sidebar"
 import Button from '../../ui/Button'
 import { useAuth } from '@/contexts/AuthContext'
 import { NavLink } from 'react-router'

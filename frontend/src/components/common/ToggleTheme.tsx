@@ -1,5 +1,5 @@
 import { useTheme } from "@/contexts/ThemeContext"
-import { Switch } from "../shadcn/ui/switch"
+import { Switch } from "@basic/components/shadcn/ui/switch"
 import { Moon, Sun } from "lucide-react"
 import Button from "../ui/Button"
 

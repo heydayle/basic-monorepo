@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { SidebarTrigger } from '@/components/shadcn/ui/sidebar'
+import { SidebarTrigger } from "@basic/components/shadcn/ui/sidebar"
 import { ToggleTheme } from './ToggleTheme'
 
 import {
@@ -7,8 +7,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/shadcn/ui/dropdown-menu'
-import { Avatar, AvatarFallback } from '@/components/shadcn/ui/avatar'
+} from "@basic/components/shadcn/ui/dropdown-menu"
+import { Avatar, AvatarFallback } from "@basic/components/shadcn/ui/avatar"
 import { useAuth } from '@/contexts/AuthContext'
 import { useState } from 'react'
 

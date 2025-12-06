@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from '@/components/shadcn/ui/avatar'
+import { Avatar, AvatarFallback } from "@basic/components/shadcn/ui/avatar"
 import { useAuth } from '@/contexts/AuthContext'
 import { NavLink } from 'react-router'
 
