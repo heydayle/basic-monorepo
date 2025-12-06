@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import { SidebarProvider } from "@/components/shadcn/ui/sidebar"
+import { SidebarProvider } from "@basic-monorepo/ui/sidebar"
 import { AppSidebar } from './sidebars/AppSidebar'
 import { AdminHeader } from '../common/Header'
 

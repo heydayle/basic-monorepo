@@ -5,7 +5,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/shadcn/ui/select'
+} from '@basic-monorepo/ui/select'
 import { useState } from 'react'
 
 const LANGUAGES = [

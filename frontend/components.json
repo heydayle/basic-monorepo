@@ -12,11 +12,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "@/components/shadcn",
-    "utils": "@/lib/utils",
-    "ui": "@/components/shadcn/ui",
-    "lib": "@/lib",
-    "hooks": "@/hooks"
+    "components": "@basic-monorepo/ui",
+    "utils": "@basic-monorepo/ui/lib/utils",
+    "ui": "@basic-monorepo/ui",
+    "lib": "@basic-monorepo/ui/lib",
+    "hooks": "@basic-monorepo/ui/hooks"
   },
   "registries": {}
 }
