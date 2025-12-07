@@ -1,11 +1,11 @@
 import { twMerge } from 'tailwind-merge'
 
 const SIZES = {
-    xs: 'text-xs px-2 py-1 rounded-xs',
-    sm: 'text-sm px-3 py-1.5 rounded-sm',
-    md: 'text-base px-4 py-2 rounded-md',
-    lg: 'text-lg px-5 py-2.5 rounded-lg',
-    xl: 'text-xl px-6 py-3 rounded-xl',
+  xs: 'text-xs px-2 py-1 rounded-xs',
+  sm: 'text-sm px-3 py-1.5 rounded-sm',
+  md: 'text-base px-4 py-2 rounded-md',
+  lg: 'text-lg px-5 py-2.5 rounded-lg',
+  xl: 'text-xl px-6 py-3 rounded-xl',
 } as const
 
 const VARIANTS = {
@@ -30,13 +30,15 @@ const buttonDefaultProps = {
 }
 
 export default function Button(props: ButtonProps) {
-  const { color, block, icon, size, rounded, variant, className, ...rest } = { ...buttonDefaultProps, ...props }
-  
+  const { color, block, icon, size, rounded, variant, className, ...rest } = {
+    ...buttonDefaultProps,
+    ...props,
+  }
+
   const variantClasses = VARIANTS[variant as keyof typeof VARIANTS]
   const sizeClasses = SIZES[size as keyof typeof SIZES]
   const iconClass = icon ? 'p-2' : 'px-4 py-2'
   const blockClass = block ? 'w-full rounded-md' : ''
-
 
   const colorClasses = () => {
     switch (variant) {
@@ -57,7 +59,7 @@ export default function Button(props: ButtonProps) {
       }
     }
   }
-  
+
   const buttonClassName = twMerge(
     'p-2 border font-medium cursor-pointer focus:outline-none focus:ring transition duration-150 ease-in-out',
     variantClasses,

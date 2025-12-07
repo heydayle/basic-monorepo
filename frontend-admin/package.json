@@ -44,6 +44,7 @@
     "globals": "catalog:",
     "prettier": "^3.6.2",
     "tw-animate-css": "catalog:",
+    "typescript": "catalog:",
     "vite": "catalog:"
   }
 }

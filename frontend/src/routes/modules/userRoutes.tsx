@@ -15,7 +15,7 @@ export const userProfileRoutes = [
 ]
 
 export const userRoutes = [
-  { 
+  {
     path: 'u',
     element: <UserProfileLayout />,
     children: userProfileRoutes,
@@ -24,5 +24,5 @@ export const userRoutes = [
     index: true,
     path: 'dashboard',
     Component: DashboardPage,
-  }
+  },
 ]

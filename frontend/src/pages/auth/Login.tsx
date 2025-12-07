@@ -73,7 +73,7 @@ export default function LoginPage() {
           >
             <span> {'Login'} </span>
             {loading ? (
-              <LoaderCircle className='w-4 h-4 ml-2 animate animate-spin'/>
+              <LoaderCircle className='w-4 h-4 ml-2 animate animate-spin' />
             ) : (
               <ArrowRight className='relative left-0 ml-2 h-4 w-4 group-hover:left-2 transition-all duration-200' />
             )}

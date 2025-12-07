@@ -11,7 +11,7 @@ export default function RequireRole({ allow }: RequireRoleProps) {
   const location = useLocation()
 
   if (authLoading) {
-    return (<Loading />)
+    return <Loading />
   }
 
   if (!allow.includes(role)) {

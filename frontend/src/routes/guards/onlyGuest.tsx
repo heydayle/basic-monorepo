@@ -13,15 +13,15 @@ const getRoleDefaultPath = (role: Role): string => {
 
 export default function OnlyGuest() {
   const { role, authLoading } = useAuth()
-  
+
   if (authLoading) {
-    return (<Loading />)
+    return <Loading />
   }
-  
+
   if (role !== 'guest') {
     const redirectPath = getRoleDefaultPath(role)
     return <Navigate to={redirectPath} replace />
   }
-  
+
   return <Outlet />
 }

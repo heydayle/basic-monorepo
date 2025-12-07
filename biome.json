@@ -10,7 +10,8 @@
       "!**/dist",
       "!**/build",
       "!**/.vscode",
-      "!**/.react-router"
+      "!**/.react-router",
+      "!**/packages/**"
     ],
     "ignoreUnknown": false
   },

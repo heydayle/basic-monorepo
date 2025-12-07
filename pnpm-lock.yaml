@@ -87,6 +87,9 @@ catalogs:
     tw-animate-css:
       specifier: ^1.4.0
       version: 1.4.0
+    typescript:
+      specifier: ^5.9.3
+      version: 5.9.3
     vite:
       specifier: npm:rolldown-vite@7.2.2
       version: 7.2.2
@@ -207,6 +210,9 @@ importers:
       tw-animate-css:
         specifier: 'catalog:'
         version: 1.4.0
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
       vite:
         specifier: 'catalog:'
         version: rolldown-vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)
@@ -289,6 +295,9 @@ importers:
       tw-animate-css:
         specifier: 'catalog:'
         version: 1.4.0
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
       vite:
         specifier: 'catalog:'
         version: rolldown-vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)
@@ -1857,6 +1866,11 @@ packages:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
@@ -3294,6 +3308,8 @@ snapshots:
   type-check@0.4.0:
     dependencies:
       prelude-ls: 1.2.1
+
+  typescript@5.9.3: {}
 
   undici-types@7.16.0: {}
 

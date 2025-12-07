@@ -60,7 +60,7 @@ const AppRoutes = createBrowserRouter([
   {
     /* 404 Not Found page */
     path: '*',
-    Component: NotFound 
+    Component: NotFound,
   },
 ])
 

@@ -14,7 +14,9 @@ export default function ProfileSidebar() {
       <div className='flex flex-col items-center mb-6'>
         <Avatar className='w-24 h-24 border cursor-pointer'>
           {/* <AvatarImage src='https://github.com/shadcn.png' /> */}
-          <AvatarFallback className='text-3xl'>{user?.username.charAt(0).toUpperCase()}</AvatarFallback>
+          <AvatarFallback className='text-3xl'>
+            {user?.username?.charAt(0).toUpperCase()}
+          </AvatarFallback>
         </Avatar>
         <h2 className='text-xl font-semibold text-primary'>{user?.username}</h2>
         <p className='text-sm text-gray-500'>{user?.email}</p>

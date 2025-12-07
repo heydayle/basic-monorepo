@@ -60,10 +60,14 @@ const UserHeader = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent align='start'>
                 <DropdownMenuItem>
-                  <Link to='/u/profile' onClick={() => setMenuOpen(false)}>Profile</Link>
+                  <Link to='/u/profile' onClick={() => setMenuOpen(false)}>
+                    Profile
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Link to='/u/settings' onClick={() => setMenuOpen(false)}>Settings</Link>
+                  <Link to='/u/settings' onClick={() => setMenuOpen(false)}>
+                    Settings
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <button

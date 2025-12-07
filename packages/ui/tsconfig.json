@@ -4,7 +4,11 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "strict": true,
@@ -12,10 +16,21 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@basic-monorepo/ui/*": ["./src/ui/*"],
-      "@basic-monorepo/ui/hooks/*": ["./src/hooks/*"],
-      "@basic-monorepo/ui/lib/*": ["./src/lib/*"]
+      "@basic-monorepo/ui/*": [
+        "./src/ui/*"
+      ],
+      "@basic-monorepo/ui/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@basic-monorepo/ui/lib/*": [
+        "./src/lib/*"
+      ]
     }
   },
-  "include": ["./src"]
+  "include": [
+    "./src"
+  ],
+  "exclude": [
+    "./src/ui/*"
+  ]
 }
