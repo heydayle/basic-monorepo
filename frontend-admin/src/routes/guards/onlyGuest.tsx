@@ -13,7 +13,6 @@ const getRoleDefaultPath = (role: Role): string => {
 
 export default function OnlyGuest() {
   const { role, authLoading } = useAuth()
-  const location = useLocation()
   
   if (authLoading) {
     return (<Loading />)

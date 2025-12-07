@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from 'react'
+import { createContext, type ReactNode, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 export type Role = 'guest' | 'user' | 'admin'
 export interface User {
@@ -39,6 +39,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(() => {
     return localStorage.getItem('token') || null
   })
+
+  const isAuthenticated = useMemo(() => {
+    return !!user && user.role !== 'guest'
+  }, [user])
 
   const getUserInfo = (): Promise<User> => {
     return new Promise<User>((resolve) => {
@@ -105,7 +109,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     authLoading,
     setAuthLoading,
-    isAuthenticated: role !== 'guest',
+    isAuthenticated,
     login,
     authentication,
     getUserInfo,

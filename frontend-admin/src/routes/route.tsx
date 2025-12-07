@@ -36,7 +36,7 @@ const AppRoutes = createBrowserRouter([
   },
   {
     /* Routes for admin users within the admin layout */
-    element: <RequireRole allow={['admin']} />,
+    element: <RequireRole />,
     children: [
       {
         element: <AdminLayout />,

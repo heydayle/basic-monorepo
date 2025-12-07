@@ -4,8 +4,6 @@ import Loading from '@/components/common/Loading'
 
 const getRoleDefaultPath = (role: Role): string => {
   switch (role) {
-    case 'admin':
-      return '/admin/dashboard'
     case 'user':
       return '/dashboard'
     default:
