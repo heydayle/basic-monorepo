@@ -5,7 +5,6 @@ import OnlyGuest from './guards/onlyGuest'
 import RequireRole from './guards/requireRole'
 
 // Layouts
-import AdminLayout from '../components/layouts/Admin'
 import AuthLayout from '../components/layouts/Auth'
 import AppLayout from '../components/layouts/Default'
 import UserLayout from '../components/layouts/User'
@@ -14,7 +13,6 @@ import UserLayout from '../components/layouts/User'
 import LoginPage from '../pages/auth/Login'
 
 // Routes
-import adminRoutes from './modules/adminRoutes'
 import { userRoutes } from './modules/userRoutes'
 import guestRoutes from './modules/guestRoutes'
 
@@ -45,17 +43,6 @@ const AppRoutes = createBrowserRouter([
             Component: LoginPage,
           },
         ],
-      },
-    ],
-  },
-  {
-    /* Routes for admin users within the admin layout */
-    element: <RequireRole allow={['admin']} />,
-    children: [
-      {
-        element: <AdminLayout />,
-        path: 'admin',
-        children: adminRoutes,
       },
     ],
   },

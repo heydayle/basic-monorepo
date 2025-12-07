@@ -23,7 +23,7 @@ type AuthContextValue = {
 }
 
 const FAKE_USER: User = {
-  role: 'admin',
+  role: 'user',
   fullName: 'John Doe',
   username: 'john_doe',
   phoneNumber: '123-456-7890',

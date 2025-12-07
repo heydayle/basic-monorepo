@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@basic-monorepo/ui/*": ["./src/ui/*"],
+      "@basic-monorepo/ui/hooks/*": ["./src/hooks/*"],
+      "@basic-monorepo/ui/lib/*": ["./src/lib/*"]
+    }
+  },
+  "include": ["./src"]
+}

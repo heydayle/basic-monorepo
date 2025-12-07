@@ -1,0 +1,49 @@
+{
+  "name": "frontend-admin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite -- --host",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "pnpm type-check && pnpm lint",
+    "fix": "biome check . --fix --no-errors-on-unmatched",
+    "lint": "biome check . --no-errors-on-unmatched",
+    "lint:fix": "biome lint . --fix --no-errors-on-unmatched",
+    "format": "biome format . --write --no-errors-on-unmatched",
+    "format:check": "biome format . --no-errors-on-unmatched",
+    "clean": "rm -rf build dist .cache node_modules/.cache",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@basic-monorepo/ui": "workspace:*",
+    "@tailwindcss/vite": "catalog:",
+    "class-variance-authority": "catalog:",
+    "clsx": "^2.1.1",
+    "dayjs": "catalog:",
+    "lucide-react": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-hook-form": "catalog:",
+    "react-router": "catalog:",
+    "tailwind-merge": "catalog:",
+    "tailwindcss": "catalog:",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-react-refresh": "catalog:",
+    "globals": "catalog:",
+    "prettier": "^3.6.2",
+    "tw-animate-css": "catalog:",
+    "vite": "catalog:"
+  }
+}

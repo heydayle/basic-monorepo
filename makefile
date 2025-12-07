@@ -33,6 +33,7 @@ _setup-containers:
 _install-frontend:
 	@echo "📦 Installing frontend dependencies"
 	@docker-compose exec frontend pnpm --filter frontend install
+	@docker-compose exec frontend-admin pnpm --filter frontend-admin install
 	@$(MAKE) restart
 
 add-pkg-frontend:
@@ -54,11 +55,10 @@ add-pkg-frontend:
 dev:
 	@echo "🚀 Starting development environment..."
 	@docker-compose up -d
-	@echo ""
+	@echo "----------------------------------------"
 	@echo "🌐 Services available at:"
-	@echo "- Frontend: http://localhost:3000"
-# 	@printf '- Frontend:	$(BLUE)http://localhost:3000$(NC)\n'
-# 	@printf '- Backend:	$(BLUE)http://localhost:6001$(NC)\n'
+	@echo "- User Host: http://localhost:3000"
+	@echo "- Admin Host: http://localhost:3001"
 
 stop:
 	@echo "🛑 Stopping development environment..."
