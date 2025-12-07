@@ -1,12 +1,11 @@
 import { useTheme } from "@/contexts/ThemeContext"
-import { Switch } from "../shadcn/ui/switch"
+import { Switch } from "@basic-monorepo/ui/switch"
 import { Moon, Sun } from "lucide-react"
 import Button from "../ui/Button"
 
 interface IPropsToggleTheme {
     type?: 'compact' | 'default'
 }
-
 export function ToggleTheme({ type = 'default' }: IPropsToggleTheme) {
     const { theme, toggleTheme } = useTheme()
 
