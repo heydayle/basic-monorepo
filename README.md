@@ -35,6 +35,8 @@ basic-monorepo/
 
 ### Setup
 
+#### Option 1: Using Make (Recommended)
+
 1. **Copy environment configuration** (if `example.env` exists)
    ```bash
    cp example.env .env
@@ -53,6 +55,28 @@ basic-monorepo/
 3. **Access the applications**
    - **User App**: http://localhost:3000
    - **Admin App**: http://localhost:3001
+
+#### Option 2: Using Deployment Script
+
+Run the automated deployment script:
+
+```bash
+./deploy-local.sh
+```
+
+**Script Features:**
+- ✓ Checks if Docker is running
+- ✓ Validates environment configuration
+- ✓ Builds Docker images
+- ✓ Installs all dependencies
+- ✓ Starts services
+- ✓ Displays service URLs
+
+**Script Options:**
+```bash
+./deploy-local.sh --clean  # Clean up before deployment
+./deploy-local.sh --help   # Show help message
+```
 
 ## 📋 Available Commands
 
