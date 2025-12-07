@@ -10,6 +10,7 @@ import AuthLayout from '../components/layouts/Auth'
 
 // Pages
 import LoginPage from '../pages/auth/Login'
+import NotFound from '../components/common/NotFound'
 
 // Routes
 import adminRoutes from './modules/adminRoutes'
@@ -48,7 +49,7 @@ const AppRoutes = createBrowserRouter([
   {
     /* 404 Not Found page */
     path: '*',
-    element: '404 Not Found',
+    Component: NotFound,
   },
 ])
 

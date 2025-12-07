@@ -22,14 +22,9 @@ const items = [
     icon: Home,
   },
   {
-    title: 'Category',
-    url: 'category',
+    title: 'Tools',
+    url: 'tools',
     icon: Inbox,
-  },
-  {
-    title: 'Settings',
-    url: 'settings',
-    icon: Settings,
   },
 ]
 

@@ -42,20 +42,14 @@ const UserHeader = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <header className='sticky top-0 bg-white dark:bg-neutral-900 shadow-sm border-b'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between items-center h-16'>
+      <div className='px-4 sm:px-6 lg:px-8'>
+        <div className='flex justify-between items-center h-12'>
           <div className=''>
             <h1 className='text-xl font-semibold text-gray-900 dark:text-neutral-200'>
-              Insight Hubs
+              <SidebarTrigger /> <span className='ml-4'>Insight Hubs</span>
             </h1>
           </div>
           <nav className='hidden md:flex space-x-8'>
-            <Link
-              to='/dashboard'
-              className='text-gray-500 hover:text-gray-900 dark:hover:text-gray-200 px-3 py-2 text-sm font-medium'
-            >
-              Home
-            </Link>
             <DropdownMenu open={menuOpen} onOpenChange={setMenuOpen}>
               <DropdownMenuTrigger asChild>
                 <Avatar className='border cursor-pointer'>
@@ -93,28 +87,4 @@ const UserHeader = () => {
   )
 }
 
-const AdminHeader = () => {
-  return (
-    <header className='sticky top-0 px-4 w-full bg-gray-800 dark:bg-neutral-900 shadow-sm border-b'>
-      <div className='mx-auto'>
-        <div className='flex justify-between items-center h-12'>
-          <div className=''>
-            <h1 className='text-xl font-semibold text-white dark:text-neutral-200'>
-              <SidebarTrigger /> <span className='ml-4'>Admin Panel</span>
-            </h1>
-          </div>
-          <nav className='hidden md:flex space-x-8'>
-            <Link
-              to='/admin/dashboard'
-              className='text-gray-500 hover:text-gray-900 dark:hover:text-gray-200 px-3 py-2 text-sm font-medium'
-            >
-              Dashboard
-            </Link>
-          </nav>
-        </div>
-      </div>
-    </header>
-  )
-}
-
-export { GuestHeader as Header, UserHeader, AdminHeader }
+export { GuestHeader as Header, UserHeader }
