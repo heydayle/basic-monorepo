@@ -36,22 +36,6 @@ _install-frontend:
 	@docker-compose exec frontend-admin pnpm --filter frontend-admin install
 	@$(MAKE) restart
 
-add-pkg-frontend:
-	@echo "📦 Adding package to frontend..."
-	@if [ -z "$(PKG)" ]; then \
-		echo '⚠️ Usage: make add-pkg-frontend PKG=<package-name> [DEV=1]'; \
-		echo "Example: make add-pkg-frontend PKG=axios"; \
-		exit 1; \
-	fi
-	@if [ "$(DEV)" = "1" ] || [ "$(DEV)" = "true" ]; then \
-		echo "Installing devDependency: $(PKG)"; \
-		docker-compose exec frontend pnpm --filter frontend add -D $(PKG); \
-	else \
-		echo "Installing dependency: $(PKG)"; \
-		docker-compose exec frontend pnpm --filter frontend add $(PKG); \
-	fi
-	@$(MAKE) restart
-
 dev:
 	@echo "🚀 Starting development environment..."
 	@docker-compose up -d
@@ -64,9 +48,25 @@ stop:
 	@echo "🛑 Stopping development environment..."
 	@docker-compose down
 
-shell-fe:
-	@echo "🔍 Opening shell in frontend container..."
-	@docker-compose exec frontend sh \
+shell:
+	@echo "Please select workspace:"
+	@echo "1. frontend"
+	@echo "2. frontend-admin"
+	@echo "3. packages/ui"
+	@read -p "Enter your choice (1, 2 or 3): " choice; \
+	case $$choice in \
+		1) \
+			echo "🔍 Opening shell in frontend container..."; \
+			docker-compose exec frontend sh ;; \
+		2) \
+			echo "🔍 Opening shell in frontend-admin container..."; \
+			docker-compose exec frontend-admin sh ;; \
+		3) \
+			echo "🔍 Opening shell in packages/ui (via frontend container)..."; \
+			docker-compose exec -w /workspace/packages/ui frontend sh ;; \
+		*) \
+			echo "Invalid choice. Please enter 1, 2 or 3." ;; \
+	esac
 
 logs:
 	@docker-compose logs -f
@@ -106,16 +106,20 @@ check-fe:
 _fix-lint:
 	@echo "🔮 Fixing lint issues in frontend"
 	@docker-compose exec frontend pnpm --filter frontend fix
+	@docker-compose exec frontend pnpm --filter frontend-admin fix
 
 _fix-format:
 	@echo "🔮 Formatting frontend code"
 	@docker-compose exec frontend pnpm --filter frontend format
+	@docker-compose exec frontend pnpm --filter frontend-admin format
 
 _check-fe-quality:
 	@echo "🔍 - Checking type and lint"
 	@docker-compose exec frontend pnpm --filter frontend check
+	@docker-compose exec frontend pnpm --filter frontend-admin check
 
 _check-fe-format:
 	@echo "🔍 Checking format"
 	@docker-compose exec frontend pnpm --filter frontend format:check
+	@docker-compose exec frontend pnpm --filter frontend-admin format:check
 	
