@@ -9,8 +9,8 @@ basic-monorepo/
 ├── frontend/           # User-facing application
 ├── frontend-admin/     # Admin application
 ├── packages/           # Shared UI components and utilities
-├── docker/            # Docker configurations
-├── makefile           # Development automation scripts
+├── docker/             # Docker configurations
+├── makefile            # Development automation scripts
 └── pnpm-workspace.yaml # Workspace configuration
 ```
 
@@ -154,6 +154,7 @@ The project uses Docker Compose with:
 
 ## 📚 Additional Documentation
 
+- [Adding New Workspaces](./docs/ADD_NEW_WORKSPACE.md) - Complete guide for adding new apps/packages
 - [Frontend Packages](./FRONTEND_PACKAGES.md) - Detailed package documentation
 
 ## 🔧 Troubleshooting
