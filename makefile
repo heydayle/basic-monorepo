@@ -76,12 +76,6 @@ restart:
 	@docker-compose restart
 
 clean:
-# 	@echo "🧹 Cleaning up development environment..."
-# 	@docker-compose down -v --remove-orphans
-#   @docker system prune -f
-# 	@rm -rf node_modules frontend/node_modules
-# 	@rm -rf frontend/dist
-# 	@echo "✅ Cleanup completed!"
 	@echo "🧹 Cleaning up development environment..."
 	@docker compose down --volumes --remove-orphans
 	-@docker volume rm workspace_node_modules 2>/dev/null
