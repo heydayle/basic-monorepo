@@ -85,8 +85,8 @@ clean:
 	@echo "🧹 Cleaning up development environment..."
 	@docker compose down --volumes --remove-orphans
 	-@docker volume rm workspace_node_modules 2>/dev/null
-	-@rm -rf node_modules frontend/node_modules
-	-@rm -rf frontend/dist
+	-@rm -rf node_modules frontend/node_modules frontend-admin/node_modules
+	-@rm -rf frontend/dist frontend-admin/dist
 	@echo "✅ Cleanup completed!"
 
 fix-fe:
