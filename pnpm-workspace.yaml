@@ -1,6 +1,7 @@
 # checkout more: https://pnpm.io/catalogs
 packages:
   - 'frontend'
+  - 'frontend-admin'
   - 'packages/*'
 
 catalog:

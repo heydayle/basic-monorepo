@@ -4,7 +4,17 @@ x-vite-env: &vite-env
 x-workspace-service: &workspace-service
   build:
     context: .
-    dockerfile: docker/Dockerfile.dev
+    dockerfile: docker/frontend/Dockerfile.dev
+  working_dir: /workspace
+  volumes:
+    - .:/workspace
+    - workspace_node_modules:/workspace/node_modules
+    - pnpm_store:/workspace/.pnpm-store
+
+x-admin-service: &admin-service
+  build:
+    context: .
+    dockerfile: docker/frontend-admin/Dockerfile.dev
   working_dir: /workspace
   volumes:
     - .:/workspace
@@ -15,6 +25,10 @@ services:
   # Install dependencies once for the whole monorepo
   packages-install:
     <<: *workspace-service
+    command: pnpm install
+
+  packages-admin-install:
+    <<: *admin-service
     command: pnpm install
 
   # (Optional) workspace-level commands for packages
@@ -38,7 +52,29 @@ services:
       <<: *vite-env
     depends_on:
       - packages-install
-    command: pnpm --filter frontend dev
+    command: pnpm dev
+
+  # Admin app
+  frontend-admin-packages:
+    <<: *admin-service
+    working_dir: /workspace/packages
+    command: pnpm --filter packages dev
+    profiles:
+      - packages
+      
+  frontend-admin:
+    <<: *admin-service
+    working_dir: /workspace/frontend-admin
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+      - frontend-admin/.env
+    environment:
+      <<: *vite-env
+    depends_on:
+      - packages-admin-install
+    command: pnpm dev
 
 volumes:
   workspace_node_modules: {}

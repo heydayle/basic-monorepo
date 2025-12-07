@@ -1,0 +1,35 @@
+{
+  "include": [
+    "src",
+    "vite-env.d.ts"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "module": "ESNext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@basic-monorepo/ui": ["../packages/ui/src"],
+      "@basic-monorepo/ui/*": ["../packages/ui/src/ui/*"],
+      "@basic-monorepo/ui/hooks/*": ["../packages/ui/src/hooks/*"],
+      "@basic-monorepo/ui/lib/*": ["../packages/ui/src/lib/*"]
+    }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}

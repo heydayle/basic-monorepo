@@ -33,6 +33,7 @@ _setup-containers:
 _install-frontend:
 	@echo "📦 Installing frontend dependencies"
 	@docker-compose exec frontend pnpm --filter frontend install
+	@docker-compose exec frontend-admin pnpm --filter frontend-admin install
 	@$(MAKE) restart
 
 add-pkg-frontend:
